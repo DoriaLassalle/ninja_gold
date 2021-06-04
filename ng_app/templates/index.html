@@ -14,16 +14,15 @@
 </head>
 
 <body>
-    <h1 class="text-secondary text-center my-3">Ninja Gold Game</h1>
+    <h1 class="text-dark text-center my-3">Ninja Gold Game</h1>
     <div class="container">
         <div class="row justify-content-center">
-            <h3 class="text-secondary text-center my-3 border border-primary border-3 col-4 p-2">*** Your Gold: {{request.session.gold}} *** </h3>
-         
+            <h3 class="text-dark text-center my-3 border border-warning border-3 rounded-2 bg-light col-4 p-2 shadow">*** Your Gold: {{request.session.gold}} *** </h3>
         </div> 
 
         <div class="row justify-content-center">
             <!-- Farm -->
-            <div class="col-2 border border-danger  border-3 p-4 text-center bg-light text-secondary my-4 mx-2">
+            <div class="col-2 border border-danger border-3 p-4 text-center bg-light text-secondary my-4 mx-2 shadow-lg ">
                 <h3 class="text-danger">Farm</h3>
                 <p>Earns 10-20 golds</p>
                 <form action="process_money" method="POST">
@@ -34,7 +33,7 @@
             </div>
 
             <!-- Cave -->
-            <div class="col-2 border border-info  border-3 p-4 text-center bg-light text-secondary my-4 mx-2">
+            <div class="col-2 border border-info  border-3 p-4 text-center bg-light text-secondary my-4 mx-2 shadow-lg">
                 <h3 class="text-info">Cave</h3>
                 <p>Earns 5-10 golds</p>
                 <form action="process_money" method="POST">
@@ -45,7 +44,7 @@
             </div>
 
             <!-- House -->
-            <div class="col-2 border border-warning  border-3 p-4 text-center bg-light text-secondary my-4 mx-2">
+            <div class="col-2 border border-warning  border-3 p-4 text-center bg-light text-secondary my-4 mx-2 shadow-lg">
                 <h3 class="text-warning">House</h3>
                 <p>Earns 2-5 golds</p>
                 <form action="process_money" method="POST">
@@ -56,37 +55,37 @@
             </div>
 
             <!-- Casino -->
-            <div class="col-2 border border-success  border-3 p-4 text-center bg-light text-secondary my-4 mx-2">
+            <div class="col-2 border border-success  border-3 p-4 text-center bg-light text-secondary my-4 mx-2 shadow-lg">
                 <h3 class="text-success">Casino</h3>
                 <p>Earns/Takes<br>0-50 golds</p>
                 <form action="process_money" method="POST">
                     {%csrf_token%}
                     <input type="submit" value="Find Gold!" class="text-white bg-success rounded-2"></input>
                     <input type="hidden"  name="btn" value="4"></input>
-                </form>
-               <!--  <a href="process_money" class="button rounded-2 text-white text-decoration-none bg-success p-2">Find Gold!</a> -->
+                </form>               
             </div>      
         </div>
 
         <!-- Activities -->
         <section class="row">
-            <div class="act col-8 container border border-primary border-4">
+            <div class="act col-8 container border border-primary border-4 rounded-2 bg-light">
                 <h2 class="text-center text-secondary">Your Transactions...</h2>
                 <ul>
                     {% for value  in request.session.activityList %}
-                        {% if "siento" in value %}
+                        {% if "beats" in value %}
                             <li class="text-danger">{{ value }}</li>
                         {% else %}
                             <li class="text-success">{{ value }}</li>
                         {% endif %}
 
                     {% empty %}
-                        <li>No has hecho transacciones aún.</li>                                            
+                        <li class="text-dark">No Transacctions Yet ...Start Earning Gold !!!</li>                                            
                     {% endfor %}
                 </ul>
             </div>
         </section>
 
+        <!-- Restart button  -->
         <footer>
             <div class="row justify-content-center">
                 <form action="restart" method="POST">
@@ -97,7 +96,6 @@
             </div>
         </footer>
 
-    </div>
-    
+    </div>    
 </body>
 </html>

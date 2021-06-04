@@ -3,14 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'); /*'Indie Flower', cursive;  */
 @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
 
+body {
+    background: white url("imgs/back.png") no-repeat ;
+}
 
 h1{
     font-family: 'Joti One', cursive;
     font-size: 350%;
+    text-shadow: 2px 2px #fbc851;    
 }
 
-div {
- 
+div { 
     font-family: 'ZCOOL KuaiLe', cursive
 }
 
@@ -19,7 +22,3 @@ div {
     height:200px;
 }
 
-.btn{
-    background-color: rgb(61, 58, 58);
-    color: white;
-}/* no funciona este...revisar */
