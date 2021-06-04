@@ -48,6 +48,11 @@ def processMoney(request):
     print(request.session["activityList"])
     return redirect("/")
 
+def restart(request):
+    request.session["activityList"]=[]
+    request.session["gold"]=0
+    return redirect("/")
+
 
 def farmRandom():
     farm=random.randint(10, 20)
