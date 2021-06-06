@@ -4,5 +4,6 @@ from . import views
 urlpatterns=[
     path("", views.home),
     path("process_money", views.processMoney),
-    path("restart", views.restart)
+    path("restart", views.restart),
+    #path("setGoals", views.home)
 ]

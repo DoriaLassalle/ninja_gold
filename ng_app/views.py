@@ -6,7 +6,7 @@ import random
 def home(request):
     if "gold" not in request.session:
         request.session["gold"]=0
-
+   
     return render(request, "index.html")
 
 
@@ -20,19 +20,19 @@ def processMoney(request):
         money=farmRandom()
         request.session["gold"]+=money
         request.session["activity"]=f"Working at the Farm gave you {money} golds! ...{strftime('%H:%M  %w/%m/%Y.',localtime())}"
-        request.session["activityList"].append(request.session["activity"])
+        request.session["activityList"].insert(0,request.session["activity"])
 
     elif opcion=="2":
         money=caveRandom()
         request.session["gold"]+=money
         request.session["activity"]=f"Spend one night at the Cave gave you {money} golds! ...{strftime('%H:%M  %w/%m/%Y.',localtime())}"
-        request.session["activityList"].append(request.session["activity"])
+        request.session["activityList"].insert(0,request.session["activity"])
 
     elif opcion=="3":
         money=houseRandom()
         request.session["gold"]+=money
         request.session["activity"]=f"Earned {money} golds for cleaning the House! ...{strftime('%H:%M  %w/%m/%Y.',localtime())}"
-        request.session["activityList"].append(request.session["activity"])
+        request.session["activityList"].insert(0,request.session["activity"])
 
     elif opcion=="4":
         money=casinoRandom()
@@ -40,12 +40,12 @@ def processMoney(request):
         
         if luck==1:
             request.session["gold"]+=money
-            request.session["activity"]=f"Great! You won {money} golds from the Casino!!! ...{strftime('%H:%M  %w/%m/%Y.',localtime())}"
-            request.session["activityList"].append(request.session["activity"])
+            request.session["activity"]=f"Great!!  You won {money} golds from the Casino!!! ...{strftime('%H:%M  %w/%m/%Y.',localtime())}"
+            request.session["activityList"].insert(0,request.session["activity"])
         elif luck==2:
             request.session["gold"]-=money
-            request.session["activity"]=f"The Casino beats you :( ...you lost {money} golds! ...{strftime('%H:%M  %w/%m/%Y.',localtime())}"
-            request.session["activityList"].append(request.session["activity"])
+            request.session["activity"]=f"The Casino beats you :( ...you lost {money} golds! ...{strftime('%H:%M  %w/%m/%Y.',localtime())}"            
+            request.session["activityList"].insert(0,request.session["activity"])
     
     return redirect("/")
 

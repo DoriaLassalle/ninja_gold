@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Ninja Gold</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css'%}">
+</head>
+<body>
+    <h1 class="text-dark text-center my-3">Ninja Gold Game</h1>
+    <div class="container">
+        <form action="setGoals" method="post">
+            {%csrf_token%}
+            <input type="number" id="goldmax" name="goldMax" class=""">
+            <label for="goldmax" class="form-control">Enter how much Gold you want to win: </label>
+            <input type="number" id="moves" name="moves" class="">
+            <label for="moves" class="form-control">In how many moves are you going to get it?</label>
+            <input type="submit" value="PLAY" class="text-white bg-success rounded-2 col-2 offset-5 my-3 py-3"></input>
+            <input type="hidden"  name="btnPlay" value="5"></input>
+        </form>
+
+    </div>
+
+    
+</body>
+</html>
