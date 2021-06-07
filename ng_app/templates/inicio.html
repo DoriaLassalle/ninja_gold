@@ -13,14 +13,25 @@
     <link rel="stylesheet" href="{% static 'styles.css'%}">
 </head>
 <body>
-    <h1 class="text-dark text-center my-3">Ninja Gold Game</h1>
+    <h1 class="text-dark text-center my-5">Ninja Gold Game</h1>
     <div class="container">
-        <form action="setGoals" method="post">
-            {%csrf_token%}
-            <input type="number" id="goldmax" name="goldMax" class=""">
-            <label for="goldmax" class="form-control">Enter how much Gold you want to win: </label>
-            <input type="number" id="moves" name="moves" class="">
-            <label for="moves" class="form-control">In how many moves are you going to get it?</label>
+        <form action="setGoals" method="post" class="my-4">
+            {%csrf_token%} 
+            <div class="row my-2">
+                <label for="player" class="col-4 offset-3 size">Enter your Name: </label>
+                <input type="text" id="player" name="player" class="col-2" required>   
+            </div>
+
+            <div class="row my-2">
+                <label for="goldmax" class="col-4 offset-3 size">How much Gold do you Want? </label>
+                <input type="number" id="goldmax" name="goldMax" class="col-1" required>   
+            </div>   
+
+            <div class="row my-2">
+                <label for="moves" class="col-4 offset-3 size">In how many Moves will you Get it?</label>
+                <input type="number" id="moves" name="moves" class="col-1" required>
+            </div>            
+            
             <input type="submit" value="PLAY" class="text-white bg-success rounded-2 col-2 offset-5 my-3 py-3"></input>
             <input type="hidden"  name="btnPlay" value="5"></input>
         </form>

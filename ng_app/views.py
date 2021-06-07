@@ -3,17 +3,38 @@ from time import localtime, strftime
 import random
 
 
+def start(request):
+    request.session["activityList"]=[]
+    request.session["gold"]=0
+    request.session["meta"]=0
+    return render(request, "inicio.html")
+
 def home(request):
     if "gold" not in request.session:
-        request.session["gold"]=0
-   
+        request.session["gold"]=0         
+
+    if request.method=="POST":
+        metaDelUsuario=request.POST["goldMax"]
+        request.session["meta"]=metaDelUsuario
+        jugadas=request.POST["moves"]
+        request.session["jugadas"]=jugadas
+        request.session["player"]=request.POST["player"]
+      
+    if request.session["gold"]==request.session["meta"] or int(request.session["gold"]) > int(request.session["meta"]) and len(request.session["activityList"]) <= int(request.session["jugadas"]) :
+        ganancia=request.session["gold"]              
+        return render(request, "win.html")
+
+    if len(request.session["activityList"]) > int(request.session["jugadas"]) and int(request.session["gold"]) < int(request.session["meta"]):
+      
+        return render(request, "lose.html")
+
     return render(request, "index.html")
 
 
 def processMoney(request):
     if "activityList" not in request.session:
-        request.session["activityList"]=[]
-    
+        request.session["activityList"]=[]       
+        
     opcion=request.POST["btn"]
    
     if opcion=="1":
@@ -47,11 +68,12 @@ def processMoney(request):
             request.session["activity"]=f"The Casino beats you :( ...you lost {money} golds! ...{strftime('%H:%M  %w/%m/%Y.',localtime())}"            
             request.session["activityList"].insert(0,request.session["activity"])
     
-    return redirect("/")
+    return redirect("/continue")
 
 def restart(request):
     request.session["activityList"]=[]
     request.session["gold"]=0
+    request.session["meta"]=0
     return redirect("/")
 
 

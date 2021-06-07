@@ -15,7 +15,10 @@
 
 <body>
     <h1 class="text-dark text-center my-3">Ninja Gold Game</h1>
+   
     <div class="container">
+        <h2 class="text-dark text-center my-3">Current Player: {{request.session.player}}</h2>
+        <h2 class="text-dark text-center my-3">You Must Get <strong>{{ request.session.meta }}</strong> Golds to Win</h2>
         <div class="row justify-content-center">
             <h3 class="text-dark text-center my-3 border border-warning border-3 rounded-2 bg-light col-4 p-2 shadow">*** Your Gold: {{request.session.gold}} *** </h3>
         </div> 
@@ -76,7 +79,7 @@
                             <li class="text-danger">{{ value }}</li>
                         {% else %}
                             <li class="text-success">{{ value }}</li>
-                        {% endif %}
+                        {% endif %}                        
 
                     {% empty %}
                         <li class="text-dark">No Transacctions Yet ...Start Earning Gold !!!</li>                                            
@@ -94,8 +97,9 @@
                     <input type="hidden"  name="btnRestart" value="0"></input>
                 </form> 
             </div>
+            
         </footer>
-
+        
     </div>    
 </body>
 </html>
